@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+	</head>
+	<body>
+		<div id="root"></div>
+
+		<script type="text/babel">
+			let Welcome = ({ name }) => {
+				return <h1>hello, { show(name) }</h1>
+			};
+			let show = text => `${ text }处理`;
+			
+			class UserInfo extends React.Component {
+				render() {
+					return (
+						<div>
+							<h1>hello, { this.props.user.name }</h1>
+							<Welcome name="xxh" />
+						</div>
+					)
+				}
+			}
+			let user = { name: 2 };
+			
+			function Clock(props) {
+				return (
+					<div>
+						<h1>这是个时钟</h1>
+						<h2>now time: { props.date }</h2>
+						<p>{ props.date1 }</p>
+					</div>
+				)
+			}
+			
+			setInterval(() => {
+				ReactDOM.render(
+					<Clock date={ new Date().toLocaleTimeString() } date1={ 'haod' } />,
+					document.getElementById('root')
+				)
+			}, 1000)
+		</script>
+	</body>
+</html>
